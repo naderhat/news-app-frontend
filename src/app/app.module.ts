@@ -7,6 +7,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     SearchBarComponent,
     ToolbarComponent,
-    MenuComponent
+    MenuComponent,
+    SearchResultsComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
