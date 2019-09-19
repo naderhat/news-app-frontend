@@ -6,35 +6,42 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NewsApiService {
 
-  api_key = '';
+  api_key = '73e1750911db453f9077c789bf6b9010';
 
   constructor(private http: HttpClient) { }
 
-  getTopHeadlines(country: string, category: string) {
+  getTopHeadlines(query: string, country: string, category: string) {
     let baseUrl: string;
     let url: string;
 
     baseUrl = 'https://newsapi.org/v2/top-headlines';
 
-    url = this.buildURL(baseUrl, country, category);
+    url = this.buildURL(query, baseUrl, country, category);
     return this.http.get(url);
   }
 
-  getEverything(country: string, category: string) {
+  getEverything(query: string, country: string, category: string) {
     let baseUrl: string;
     let url: string;
 
-    baseUrl = 'https://newsapi.org/v2/everything?apiKey=';
+    baseUrl = 'https://newsapi.org/v2/everything';
 
-    url = this.buildURL(baseUrl, country, category);
+    url = this.buildURL(query, baseUrl, country, category);
     return this.http.get(url);
   }
 
-  buildURL(baseUrl: string, country: string, category: string) {
+  buildURL(query: string, baseUrl: string, country: string, category: string) {
     let params: string;
     let url: string;
 
+    if (!this.isEmpty(query)) {
+      params = 'q=' + query;
+    }
+
     if (!this.isEmpty(country)) {
+      if (!this.isEmpty(params)) {
+        params += '&';
+      }
       params = 'country=' + country;
     }
 
@@ -46,7 +53,7 @@ export class NewsApiService {
     }
 
     if (!this.isEmpty(params)) {
-      url = baseUrl + '?' + params + 'apiKey=' + this.api_key;
+      url = baseUrl + '?' + params + '&apiKey=' + this.api_key;
     } else {
       url = baseUrl + '?' + 'apiKey=' + this.api_key;
     }

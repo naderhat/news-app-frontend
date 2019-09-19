@@ -1,3 +1,7 @@
-<p>
-  search-bar works!
-</p>
+<form>
+  <h2>Search News</h2>
+  <span flex>
+    <input #searchBar placeholder="search news" [formControl]="searchNews">
+    <button (click)='performSearch(searchBar.value)'>Search</button>
+  </span>
+</form>
