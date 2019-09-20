@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,16 @@ export class NewsApiService {
 
   api_key = '73e1750911db453f9077c789bf6b9010';
 
+  searchResults;
+
+  searchResultFetched = new Subject<void>();
+
   constructor(private http: HttpClient) { }
+
+  performSearch(query: string) {
+    this.getTopHeadlines(query, '', '')
+      .subscribe(result => { this.searchResults = result; this.searchResultFetched.next(); });
+  }
 
   getTopHeadlines(query: string, country: string, category: string) {
     let baseUrl: string;
@@ -62,5 +72,9 @@ export class NewsApiService {
 
   isEmpty(str: string) {
     return (!str || str.length === 0);
+  }
+
+  getSearchResults() {
+    return this.searchResults;
   }
 }

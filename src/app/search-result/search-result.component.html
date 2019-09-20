@@ -1,3 +1,31 @@
-<p>
-  search-result works!
-</p>
+<div class="news-card">
+  <div>
+    <img width="300" alt="News Image" src="{{article.urlToImage}}">"
+  </div>
+  <div>
+    <label>Title:</label>
+    <span>{{article.title}}</span>
+  </div>
+  <div>
+    <label>Author:</label>
+    <span>{{article.author}}</span>
+  </div>
+  <div>
+    <label>Content:</label>
+    <span>{{article.content}}</span>
+  </div>
+  <div>
+    <label>Description:</label>
+    <span>{{article.description}}</span>
+  </div>
+  <div>
+    <label>Published At:</label>
+    <span>{{article.publishedAt}}</span>
+  </div>
+  <div ng-app="myApp" ng-controller="datCtrl">
+    <p>Published At: {{ article.publishedAt | date : "hh:mm - EEEE - dd MMM yyyy" }}</p>
+  </div>
+  <div>
+    <a href="{{article.url}}">Go to Source:</a>
+  </div>
+</div>

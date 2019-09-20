@@ -1,0 +1,9 @@
+.news-card {
+  height: 500px;
+  width: 800px; 
+}
+
+label {
+  font: 18px bold arial, sans-sarif;
+  margin-right: 5px;
+}

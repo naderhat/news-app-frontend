@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { NewsApiService } from 'src/app/news-api.service';
+import { Subject } from 'rxjs/internal/Subject';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class SearchBarComponent implements OnInit {
   newsApiService: NewsApiService;
   result: string;
 
+  searchResults;
+
   constructor(newsApiService: NewsApiService) {
     this.newsApiService = newsApiService;
   }
@@ -22,7 +25,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   performSearch(query: string) {
-    const result = this.newsApiService.getTopHeadlines(query, '', '').subscribe((data => console.log(data)));
+    this.newsApiService.performSearch(query);
   }
 
 }
