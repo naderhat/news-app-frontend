@@ -2,6 +2,9 @@
   <h2>Search News</h2>
   <span flex>
     <input #searchBar placeholder="search news" [formControl]="searchNews">
+    <select>
+      <option ng-repeat="country in countries"></option>
+    </select>
     <button (click)='performSearch(searchBar.value)'>Search</button>
   </span>
 </form>
