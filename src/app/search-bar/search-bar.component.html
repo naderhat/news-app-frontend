@@ -2,8 +2,8 @@
   <h2>Search News</h2>
   <span flex>
     <input #searchBar placeholder="search news" [formControl]="searchNews">
-    <select>
-      <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
+    <select name="country" [(ngModel)]="selectedCountry">
+      <option *ngFor="let country of countries" [ngValue]="country.code">{{country.name}}</option>
     </select>
     <button (click)='performSearch(searchBar.value)'>Search</button>
   </span>

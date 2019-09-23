@@ -17,6 +17,7 @@ export class SearchBarComponent implements OnInit {
   appSettingsSrv: AppSettingsService;
   result: string;
   countries: Country[];
+  selectedCountry: string;
 
   searchResults;
 
@@ -36,7 +37,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   performSearch(query: string) {
-    this.newsApiService.performSearch(query);
+    this.newsApiService.performSearch(query, this.selectedCountry);
   }
 
 }

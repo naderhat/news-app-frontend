@@ -15,8 +15,8 @@ export class NewsApiService {
 
   constructor(private http: HttpClient) { }
 
-  performSearch(query: string) {
-    this.getTopHeadlines(query, '', '')
+  performSearch(query: string, country: string) {
+    this.getTopHeadlines(query, country, '')
       .subscribe(result => { this.searchResults = result; this.searchResultFetched.next(); });
   }
 
@@ -52,7 +52,7 @@ export class NewsApiService {
       if (!this.isEmpty(params)) {
         params += '&';
       }
-      params = 'country=' + country;
+      params += 'country=' + country;
     }
 
     if (!this.isEmpty(category)) {
