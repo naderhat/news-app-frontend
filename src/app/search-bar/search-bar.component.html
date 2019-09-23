@@ -5,6 +5,9 @@
     <select name="country" [(ngModel)]="selectedCountry">
       <option *ngFor="let country of countries" [ngValue]="country.code">{{country.name}}</option>
     </select>
+    <select name="category" [(ngModel)]="selectedCategory">
+      <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+    </select>
     <button (click)='performSearch(searchBar.value)'>Search</button>
   </span>
 </form>

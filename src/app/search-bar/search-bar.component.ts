@@ -18,6 +18,9 @@ export class SearchBarComponent implements OnInit {
   result: string;
   countries: Country[];
   selectedCountry: string;
+  selectedCategory: string;
+
+  categories = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'];
 
   searchResults;
 
@@ -37,7 +40,7 @@ export class SearchBarComponent implements OnInit {
   }
 
   performSearch(query: string) {
-    this.newsApiService.performSearch(query, this.selectedCountry);
+    this.newsApiService.performSearch(query, this.selectedCountry, this.selectedCategory.toLowerCase());
   }
 
 }

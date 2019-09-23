@@ -15,8 +15,8 @@ export class NewsApiService {
 
   constructor(private http: HttpClient) { }
 
-  performSearch(query: string, country: string) {
-    this.getTopHeadlines(query, country, '')
+  performSearch(query: string, country: string, category: string) {
+    this.getTopHeadlines(query, country, category)
       .subscribe(result => { this.searchResults = result; this.searchResultFetched.next(); });
   }
 
