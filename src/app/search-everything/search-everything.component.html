@@ -5,8 +5,8 @@
     <select name="">
       <option *ngFor="let source of sources"></option>
     </select>
-    <input [owlDateTime]="dtlFrom" [owlDateTimeTrigger]="dtlFrom" placeholder="Date Time">
+    <input #fromDate [owlDateTime]="dtlFrom" [owlDateTimeTrigger]="dtlFrom" placeholder="Date Time">
     <owl-date-time #dtlFrom></owl-date-time>
-    <button (click)="performSearch(searchbar.value)">Search</button>
+    <button (click)="performSearch(searchBar.value, fromDate.value)">Search</button>
   </div>
 </form>
