@@ -3,7 +3,7 @@
   <span flex>
     <input #searchBar placeholder="search news" [formControl]="searchNews">
     <select>
-      <option ng-repeat="country in countries"></option>
+      <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
     </select>
     <button (click)='performSearch(searchBar.value)'>Search</button>
   </span>

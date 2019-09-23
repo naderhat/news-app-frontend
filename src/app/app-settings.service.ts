@@ -6,15 +6,11 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class AppSettingsService {
-  countries: string[];
 
   constructor(private http: HttpClient) {
-    this.getCountries().subscribe(data => {
-      this.countries.push(data);
-    });
   }
 
   public getCountries(): Observable<any> {
-    return this.http.get('./assets/countries.data');
+    return this.http.get('./assets/countries.json');
   }
 }
