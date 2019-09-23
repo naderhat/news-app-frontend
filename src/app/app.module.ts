@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { SearchEverythingComponent } from './search-everything/search-everything.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     ToolbarComponent,
     MenuComponent,
     SearchResultsComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    SearchEverythingComponent
   ],
   imports: [
     BrowserModule,
