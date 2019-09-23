@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class SearchEverythingComponent implements OnInit {
   sources;
+  apiDateFormat = 'yyyy-MM-ddThh:mm:ss';
 
   constructor(public newsApiService: NewsApiService, public datePipe: DatePipe) {
     this.sources = new Array();
@@ -17,8 +18,9 @@ export class SearchEverythingComponent implements OnInit {
   ngOnInit() {
   }
 
-  performSearch(query: string, fromDate: string) {
-    fromDate = this.datePipe.transform(fromDate, 'yyyy-MM-ddThh:mm:ss');
-    this.newsApiService.performSearchEverything(query, '', fromDate, '');
+  performSearch(query: string, fromDate: string, toDate: string) {
+    fromDate = this.datePipe.transform(fromDate, this.apiDateFormat);
+    toDate = this.datePipe.transform(toDate, this.apiDateFormat);
+    this.newsApiService.performSearchEverything(query, '', fromDate, toDate);
   }
 }
