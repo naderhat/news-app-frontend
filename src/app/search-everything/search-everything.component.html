@@ -1,10 +1,12 @@
 <form>
   <h2>Search Everything</h2>
   <div>
-    <input placeholder="Search News">
+    <input #searchBar placeholder="Search News">
     <select name="">
-      <option *ngFor="let "></option>
+      <option *ngFor="let source of sources"></option>
     </select>
-    <button (click)="">Search</button>
+    <input [owlDateTime]="dtlFrom" [owlDateTimeTrigger]="dtlFrom" placeholder="Date Time">
+    <owl-date-time #dtlFrom></owl-date-time>
+    <button (click)="performSearch(searchbar.value)">Search</button>
   </div>
 </form>

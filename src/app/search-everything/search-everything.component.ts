@@ -8,15 +8,17 @@ import { NewsApiService } from 'src/app/news-api.service';
 })
 export class SearchEverythingComponent implements OnInit {
   newsApiService: NewsApiService;
+  sources;
 
   constructor(newsApiService: NewsApiService) {
     this.newsApiService = newsApiService;
+    this.sources = new Array();
   }
 
   ngOnInit() {
   }
 
   performSearch(query: string) {
-    this.newsApiService.performSearch(query);
+    this.newsApiService.performSearchEverything(query, '', '', '');
   }
 }
