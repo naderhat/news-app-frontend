@@ -1,15 +1,3 @@
-<form>
-  <h2>Search News</h2>
-  <div flex>
-    <input #searchBar placeholder="Search News" [formControl]="searchNews">
-    <select name="country" [(ngModel)]="selectedCountry">
-      <option *ngFor="let country of countries" [ngValue]="country.code">{{country.name}}</option>
-    </select>
-    <select name="category" [(ngModel)]="selectedCategory">
-      <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
-    </select>
-    <button (click)="performSearch(searchBar.value)">Search</button>
-  </div>
-</form>
+<app-search-top-headlines></app-search-top-headlines>
 
 <app-search-everything></app-search-everything>

@@ -14,6 +14,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-headlines.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-h
     HttpClientModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
