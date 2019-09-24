@@ -13,6 +13,7 @@ import { SearchEverythingComponent } from './search-everything/search-everything
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-headlines.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DatePipe } from '@angular/common';
     MenuComponent,
     SearchResultsComponent,
     SearchResultComponent,
-    SearchEverythingComponent
+    SearchEverythingComponent,
+    SearchTopHeadlinesComponent
   ],
   imports: [
     BrowserModule,
