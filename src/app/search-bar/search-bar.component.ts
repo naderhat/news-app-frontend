@@ -34,13 +34,12 @@ export class SearchBarComponent implements OnInit {
     this.searchNews = new FormControl();
 
     this.appSettingsSrv.getCountries().subscribe(data => {
-      console.log(this.countries);
       this.countries = data;
     });
   }
 
   performSearch(query: string) {
-    this.newsApiService.performSearch(query, this.selectedCountry, this.selectedCategory.toLowerCase());
+    this.newsApiService.performSearchTopHeadlines(query, this.selectedCountry, this.selectedCategory.toLowerCase());
   }
 
 }

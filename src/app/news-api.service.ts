@@ -15,8 +15,13 @@ export class NewsApiService {
 
   constructor(private http: HttpClient) { }
 
-  performSearch(query: string, country: string, category: string) {
+  performSearchTopHeadlines(query: string, country: string, category: string) {
     this.getTopHeadlines(query, country, category)
+      .subscribe(result => { this.searchResults = result; this.searchResultFetched.next(); });
+  }
+
+  performSearchEverything(query: string, sources: string, from: string, to: string) {
+    this.getEverything(query, sources, from, to)
       .subscribe(result => { this.searchResults = result; this.searchResultFetched.next(); });
   }
 
@@ -26,21 +31,21 @@ export class NewsApiService {
 
     baseUrl = 'https://newsapi.org/v2/top-headlines';
 
-    url = this.buildURL(query, baseUrl, country, category);
+    url = this.buildURL(query, baseUrl, country, category, '', '', '');
     return this.http.get(url);
   }
 
-  getEverything(query: string, country: string, category: string) {
+  getEverything(query: string, sources: string, from: string, to: string) {
     let baseUrl: string;
     let url: string;
 
     baseUrl = 'https://newsapi.org/v2/everything';
 
-    url = this.buildURL(query, baseUrl, country, category);
+    url = this.buildURL(query, baseUrl, '', '', sources, from, to);
     return this.http.get(url);
   }
 
-  buildURL(query: string, baseUrl: string, country: string, category: string) {
+  buildURL(query: string, baseUrl: string, country: string, category: string, sources: string, from: string, to: string) {
     let params: string;
     let url: string;
 
@@ -60,6 +65,27 @@ export class NewsApiService {
         params += '&';
       }
       params += 'category=' + category;
+    }
+
+    if (!this.isEmpty(sources)) {
+      if (!this.isEmpty(params)) {
+        params += '&';
+      }
+      params += 'sources=' + sources;
+    }
+
+    if (!this.isEmpty(from)) {
+      if (!this.isEmpty(params)) {
+        params += '&';
+      }
+      params += 'from=' + from;
+    }
+
+    if (!this.isEmpty(to)) {
+      if (!this.isEmpty(params)) {
+        params += '&';
+      }
+      params += 'to=' + to;
     }
 
     if (!this.isEmpty(params)) {
