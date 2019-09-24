@@ -28,6 +28,9 @@ export class SearchTopHeadlinesComponent implements OnInit {
     this.appSettingsSrv.getCountries().subscribe(data => {
       this.countries = data;
     });
+    // Set dropdown to default values when component load
+    this.selectedCategory = '';
+    this.selectedCountry = '';
   }
 
   performSearch(query: string) {
