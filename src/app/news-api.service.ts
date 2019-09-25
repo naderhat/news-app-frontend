@@ -45,6 +45,15 @@ export class NewsApiService {
     return this.http.get(url);
   }
 
+  getSources() {
+    let url: string;
+
+    url = 'https://newsapi.org/v2/sources';
+
+    url += '?apiKey=' + this.api_key;
+    return this.http.get(url);
+  }
+
   buildURL(query: string, baseUrl: string, country: string, category: string, sources: string, from: string, to: string) {
     let params: string;
     let url: string;

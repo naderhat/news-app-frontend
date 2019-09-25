@@ -2,9 +2,9 @@
   <h2>Search Everything</h2>
   <div>
     <input #searchBar placeholder="Search News">
-    <select name="source">
-      <option value="">Select source</option>
-      <option *ngFor="let source of sources"></option>
+    <select name="source" [(ngModel)]="selectedSource">
+      <option value="">Select Source</option>
+      <option *ngFor="let source of sources" [ngValue]="source.id">{{source.name}}</option>
     </select>
 
     <div>
@@ -16,6 +16,6 @@
       <input #toDate [owlDateTime]="dtlTo" [owlDateTimeTrigger]="dtlTo" placeholder="To Date Time">
       <owl-date-time #dtlTo></owl-date-time>
     </div>
-    <button (click)="performSearch(searchBar.value, fromDate.value)">Search</button>
+    <button (click)="performSearch(searchBar.value, source, fromDate.value, toDate.value)">Search</button>
   </div>
 </form>
