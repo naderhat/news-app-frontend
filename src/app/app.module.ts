@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-headlines.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { SourceComponent } from './source/source.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AppRoutingModule } from './/app-routing.module';
     SearchResultsComponent,
     SearchResultComponent,
     SearchEverythingComponent,
-    SearchTopHeadlinesComponent
+    SearchTopHeadlinesComponent,
+    SourceComponent
   ],
   imports: [
     BrowserModule,
