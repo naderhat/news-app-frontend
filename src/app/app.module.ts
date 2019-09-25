@@ -16,6 +16,7 @@ import { DatePipe } from '@angular/common';
 import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-headlines.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SourceComponent } from './source/source.component';
+import { SourcesListComponent } from './sources-list/sources-list.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SourceComponent } from './source/source.component';
     SearchResultComponent,
     SearchEverythingComponent,
     SearchTopHeadlinesComponent,
-    SourceComponent
+    SourceComponent,
+    SourcesListComponent
   ],
   imports: [
     BrowserModule,
