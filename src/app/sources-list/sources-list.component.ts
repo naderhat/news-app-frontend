@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsApiService } from 'src/app/news-api.service';
 
 @Component({
   selector: 'app-sources-list',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sources-list.component.css']
 })
 export class SourcesListComponent implements OnInit {
+  sources;
 
-  constructor() { }
+  constructor(private newsApiService: NewsApiService) { }
 
   ngOnInit() {
+    this.newsApiService.getSources().subscribe(result => {
+      this.sources = result['sources'];
+    });
   }
 
 }
