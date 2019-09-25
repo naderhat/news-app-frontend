@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/news-api.service';
 import { Article } from 'src/app/article';
+import { SearchResultService } from 'src/app/search-result.service';
 
 @Component({
   selector: 'app-search-results',
@@ -8,12 +9,10 @@ import { Article } from 'src/app/article';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  newsApiService: NewsApiService;
   searchResults;
   articles: Article[];
 
-  constructor(newsApiService: NewsApiService) {
-    this.newsApiService = newsApiService;
+  constructor(private newsApiService: NewsApiService, private searchResultSrv: SearchResultService) {
     this.articles = new Array();
   }
 
@@ -26,9 +25,9 @@ export class SearchResultsComponent implements OnInit {
         });
       }
     );
-  }
 
-  clearResults() {
-    this.articles = [];
+    this.searchResultSrv.change.subscribe(result => {
+      this.articles = [];
+    });
   }
 }

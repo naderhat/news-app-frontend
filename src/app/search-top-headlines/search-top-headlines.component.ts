@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/news-api.service';
 import { AppSettingsService } from 'src/app/app-settings.service';
 import { FormControl } from '@angular/forms';
+import { SearchResultService } from 'src/app/search-result.service';
 
 @Component({
   selector: 'app-search-top-headlines',
@@ -18,7 +19,8 @@ export class SearchTopHeadlinesComponent implements OnInit {
 
   categories = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'];
 
-  constructor(public newsApiService: NewsApiService, public appSettingsSrv: AppSettingsService) {
+  constructor(private newsApiService: NewsApiService, private searchResultSrv: SearchResultService,
+    private appSettingsSrv: AppSettingsService) {
     this.countries = new Array();
   }
 
@@ -31,6 +33,7 @@ export class SearchTopHeadlinesComponent implements OnInit {
     // Set dropdown to default values when component load
     this.selectedCategory = '';
     this.selectedCountry = '';
+    this.searchResultSrv.clearSearchResult();
   }
 
   performSearch(query: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/news-api.service';
 import { DatePipe } from '@angular/common';
+import { SearchResultService } from 'src/app/search-result.service';
 
 @Component({
   selector: 'app-search-everything',
@@ -12,7 +13,8 @@ export class SearchEverythingComponent implements OnInit {
   selectedSource;
   apiDateFormat = 'yyyy-MM-ddThh:mm:ss';
 
-  constructor(public newsApiService: NewsApiService, public datePipe: DatePipe) {
+  constructor(private newsApiService: NewsApiService, private searchResultSrv: SearchResultService,
+    private datePipe: DatePipe) {
     this.sources = new Array();
   }
 
@@ -22,6 +24,7 @@ export class SearchEverythingComponent implements OnInit {
     });
 
     this.selectedSource = '';
+    this.searchResultSrv.clearSearchResult();
   }
 
   performSearch(query: string, fromDate: string, toDate: string) {
