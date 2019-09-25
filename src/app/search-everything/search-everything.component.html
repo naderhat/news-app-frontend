@@ -2,7 +2,8 @@
   <h2>Search Everything</h2>
   <div>
     <input #searchBar placeholder="Search News">
-    <select name="">
+    <select name="source">
+      <option value="">Select source</option>
       <option *ngFor="let source of sources"></option>
     </select>
 
