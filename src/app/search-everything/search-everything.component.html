@@ -16,6 +16,6 @@
       <input #toDate [owlDateTime]="dtlTo" [owlDateTimeTrigger]="dtlTo" placeholder="To Date Time">
       <owl-date-time #dtlTo></owl-date-time>
     </div>
-    <button (click)="performSearch(searchBar.value, source, fromDate.value, toDate.value)">Search</button>
+    <button (click)="performSearch(searchBar.value, fromDate.value, toDate.value)">Search</button>
   </div>
 </form>

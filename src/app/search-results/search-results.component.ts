@@ -20,6 +20,7 @@ export class SearchResultsComponent implements OnInit {
   ngOnInit() {
     this.newsApiService.searchResultFetched.subscribe(
       () => {
+        this.articles = [];
         this.newsApiService.getSearchResults().articles.map((article: Article) => {
           this.articles.push(article);
         });
