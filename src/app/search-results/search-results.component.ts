@@ -27,4 +27,8 @@ export class SearchResultsComponent implements OnInit {
       }
     );
   }
+
+  clearResults() {
+    this.articles = [];
+  }
 }
