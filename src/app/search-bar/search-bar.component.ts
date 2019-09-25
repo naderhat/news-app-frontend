@@ -38,8 +38,4 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
-  performSearch(query: string) {
-    this.newsApiService.performSearchTopHeadlines(query, this.selectedCountry, this.selectedCategory.toLowerCase());
-  }
-
 }
