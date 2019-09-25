@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="articles.length > 0">
   Search Results!
   <div *ngFor="let article of articles">
     <app-search-result [article]="article"></app-search-result>
