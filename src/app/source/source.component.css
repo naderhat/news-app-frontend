@@ -1,0 +1,14 @@
+.source-card {
+  height: 150px;
+  width: 500px;
+  margin: 10px 10px;
+  background-color: rgba(200, 200, 200, 0.3);
+  border: 4px;
+  border-style: solid;
+  border-color: gray;
+}
+
+label {
+  font: 16px arial, sans-sarif;
+  margin-right: 5px;
+}
