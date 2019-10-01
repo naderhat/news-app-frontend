@@ -1,3 +1,7 @@
 <div class="flex-container">
-  <app-source *ngFor="let source of sources" [source]="source"></app-source>
+  <app-source *ngFor="let source of sources | paginate: { itemsPerPage: 12, currentPage: p, totalItems: total }" [source]="source"></app-source>
+</div>
+
+<div class="pagination">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

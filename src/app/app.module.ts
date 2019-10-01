@@ -17,6 +17,7 @@ import { SearchTopHeadlinesComponent } from './search-top-headlines/search-top-h
 import { AppRoutingModule } from './/app-routing.module';
 import { SourceComponent } from './source/source.component';
 import { SourcesListComponent } from './sources-list/sources-list.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SourcesListComponent } from './sources-list/sources-list.component';
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxPaginationModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
