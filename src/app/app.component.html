@@ -5,5 +5,23 @@
   </h1>
   <img width="400" alt="Angular Logo" src="assets/news-feed-logo.jpg">
 </div>
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <app-search-bar></app-search-bar>
 <app-search-results></app-search-results>
