@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router/src/router_state';
+import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService, AlertService } from 'src/app/services';
 import { Router } from '@angular/router';
-import { Validators } from '@angular/forms/src/validators';
+import { Validators } from '@angular/forms';
 import { first } from 'rxjs/internal/operators';
 
 @Component({

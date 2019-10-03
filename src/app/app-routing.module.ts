@@ -12,6 +12,7 @@ import { LoginComponent } from 'src/app/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: UserRegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register-user', component: UserRegistrationComponent },
   { path: 'search-everything', component: SearchEverythingComponent },
