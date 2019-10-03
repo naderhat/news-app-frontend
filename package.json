@@ -2,6 +2,8 @@
   "name": "my-news-app",
   "version": "0.0.0",
   "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -27,7 +29,10 @@
     "ngx-pagination": "^4.1.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.5.3",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "webpack": "4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.0.3",

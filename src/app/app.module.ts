@@ -18,6 +18,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { SourceComponent } from './source/source.component';
 import { SourcesListComponent } from './sources-list/sources-list.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SearchEverythingComponent,
     SearchTopHeadlinesComponent,
     SourceComponent,
-    SourcesListComponent
+    SourcesListComponent,
+    UserRegistrationComponent,
+    HomeComponent,
+    LoginComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
