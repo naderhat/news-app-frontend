@@ -18,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'search-everything', component: SearchEverythingComponent },
   { path: 'search-top-headlines', component: SearchTopHeadlinesComponent },
   { path: 'news-sources', component: SourcesListComponent },
+  { path: 'home', component: HomeComponent },
 
   { path: '**', redirectTo: '' }
 ];

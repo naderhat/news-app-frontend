@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/models';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from 'src/environments/environment';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<any>(`$(config.apiUrl)/user/authenticate`, { email, password })
+    return this.http.post<any>(`${environment.apiUrl}/user/authenticate`, { email, password })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {
