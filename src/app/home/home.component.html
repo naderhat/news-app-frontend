@@ -1,5 +1,6 @@
 <h1>Welcome to News App, {{currentUser.firstName}}!</h1>
 <p>Enjoy reading the news</p>
 
+<app-header [isUserLoggedIn]="currentUser !== undefined"></app-header>
 <app-search-bar></app-search-bar>
 <app-search-results></app-search-results>

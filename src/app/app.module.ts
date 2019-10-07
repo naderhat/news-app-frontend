@@ -22,6 +22,7 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AlertComponent } from './alert/alert.component';
     UserRegistrationComponent,
     HomeComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
