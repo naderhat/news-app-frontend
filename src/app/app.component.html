@@ -1,17 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="400" alt="Angular Logo" src="assets/news-feed-logo.jpg">
+  <img width="400" alt="Angular Logo" src="assets/news-feed-logo.jpg" />
 </div>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
-</nav>
+<app-header [isUserLoggedIn]="currentUser != null"></app-header>
 
 <div class="jumbotron">
   <div class="container">

@@ -22,6 +22,10 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
+import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpIntercepterAuthService } from './services/intercepter-auth.service';
 
 
 @NgModule({
@@ -39,7 +43,9 @@ import { AlertComponent } from './alert/alert.component';
     UserRegistrationComponent,
     HomeComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    HeaderComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,7 @@ import { AlertComponent } from './alert/alert.component';
     AppRoutingModule,
     NgxPaginationModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, { provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterAuthService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

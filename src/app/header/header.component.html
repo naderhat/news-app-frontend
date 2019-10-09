@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-dark" *ngIf="!isUserLoggedIn">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{ title }}</a>
+    </div>
+  </div>
+</nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="isUserLoggedIn">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+</nav>
