@@ -26,6 +26,8 @@ import { HeaderComponent } from './header/header.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepterAuthService } from './services/intercepter-auth.service';
+import { NewsCategoryComponent } from './news-category/news-category.component';
+import { NewsCountryComponent } from './news-country/news-country.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { HttpIntercepterAuthService } from './services/intercepter-auth.service'
     LoginComponent,
     AlertComponent,
     HeaderComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewsCategoryComponent,
+    NewsCountryComponent
   ],
   imports: [
     BrowserModule,
