@@ -13,12 +13,9 @@
         country.name
       }}</option>
     </select>
-    <select class="form-control" name="category" [(ngModel)]="selectedCategory">
-      <option value="">Select Category</option>
-      <option *ngFor="let category of categories" [ngValue]="category">{{
-        category
-      }}</option>
-    </select>
+    <app-news-category
+      (categorySelected)="setSelectedCategory($event)"
+    ></app-news-category>
   </div>
   <button
     class="btn btn-primary form-control"

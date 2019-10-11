@@ -12,7 +12,6 @@ import { SearchResultService } from 'src/app/search-result.service';
 export class SearchTopHeadlinesComponent implements OnInit {
   searchNews: FormControl;
   countries;
-  categories;
   selectedCountry: string;
   selectedCategory: string;
 
@@ -24,7 +23,6 @@ export class SearchTopHeadlinesComponent implements OnInit {
     private appSettingsSrv: AppSettingsService
   ) {
     this.countries = new Array();
-    this.categories = new Array();
   }
 
   ngOnInit() {
@@ -34,14 +32,14 @@ export class SearchTopHeadlinesComponent implements OnInit {
       this.countries = data;
     });
 
-    this.appSettingsSrv.getNewsCategories().subscribe(data => {
-      this.categories = data;
-    });
-
     // Set dropdown to default values when component load
-    this.selectedCategory = '';
     this.selectedCountry = '';
     this.searchResultSrv.clearSearchResult();
+  }
+
+  setSelectedCategory(categorySelected: string) {
+    console.log('selected category: ' + categorySelected);
+    this.selectedCategory = categorySelected;
   }
 
   performSearch(query: string) {
