@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsApiService } from 'src/app/news-api.service';
-import { AppSettingsService } from 'src/app/app-settings.service';
+import { AppSettingsService } from 'src/app/services/app-settings.service';
 import { FormControl } from '@angular/forms';
 import { SearchResultService } from 'src/app/search-result.service';
 
@@ -12,16 +12,19 @@ import { SearchResultService } from 'src/app/search-result.service';
 export class SearchTopHeadlinesComponent implements OnInit {
   searchNews: FormControl;
   countries;
+  categories;
   selectedCountry: string;
   selectedCategory: string;
 
   searchResults;
 
-  categories = ['Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'];
-
-  constructor(private newsApiService: NewsApiService, private searchResultSrv: SearchResultService,
-    private appSettingsSrv: AppSettingsService) {
+  constructor(
+    private newsApiService: NewsApiService,
+    private searchResultSrv: SearchResultService,
+    private appSettingsSrv: AppSettingsService
+  ) {
     this.countries = new Array();
+    this.categories = new Array();
   }
 
   ngOnInit() {
@@ -30,6 +33,11 @@ export class SearchTopHeadlinesComponent implements OnInit {
     this.appSettingsSrv.getCountries().subscribe(data => {
       this.countries = data;
     });
+
+    this.appSettingsSrv.getNewsCategories().subscribe(data => {
+      this.categories = data;
+    });
+
     // Set dropdown to default values when component load
     this.selectedCategory = '';
     this.selectedCountry = '';
@@ -37,6 +45,10 @@ export class SearchTopHeadlinesComponent implements OnInit {
   }
 
   performSearch(query: string) {
-    this.newsApiService.performSearchTopHeadlines(query, this.selectedCountry, this.selectedCategory.toLowerCase());
+    this.newsApiService.performSearchTopHeadlines(
+      query,
+      this.selectedCountry,
+      this.selectedCategory.toLowerCase()
+    );
   }
 }
