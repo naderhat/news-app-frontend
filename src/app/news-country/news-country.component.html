@@ -1,0 +1,11 @@
+<select
+  class="form-control"
+  name="country"
+  [(ngModel)]="selectedCountry"
+  (change)="selected()"
+>
+  <option value="">Select Country</option>
+  <option *ngFor="let country of countries" [ngValue]="country.code">{{
+    country.name
+  }}</option>
+</select>

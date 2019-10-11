@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpIntercepterAuthService } from './services/intercepter-auth.service';
 import { NewsCategoryComponent } from './news-category/news-category.component';
+import { NewsCountryComponent } from './news-country/news-country.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { NewsCategoryComponent } from './news-category/news-category.component';
     AlertComponent,
     HeaderComponent,
     ProfileComponent,
-    NewsCategoryComponent
+    NewsCategoryComponent,
+    NewsCountryComponent
   ],
   imports: [
     BrowserModule,

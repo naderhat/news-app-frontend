@@ -7,12 +7,10 @@
       placeholder="Search News"
       [formControl]="searchNews"
     />
-    <select class="form-control" name="country" [(ngModel)]="selectedCountry">
-      <option value="">Select Country</option>
-      <option *ngFor="let country of countries" [ngValue]="country.code">{{
-        country.name
-      }}</option>
-    </select>
+
+    <app-news-country
+      (countrySelected)="setSelectedCountry(event)"
+    ></app-news-country>
     <app-news-category
       (categorySelected)="setSelectedCategory($event)"
     ></app-news-category>

@@ -28,7 +28,7 @@ export class SearchTopHeadlinesComponent implements OnInit {
   ngOnInit() {
     this.searchNews = new FormControl();
 
-    this.appSettingsSrv.getCountries().subscribe(data => {
+    this.appSettingsSrv.getNewsCountries().subscribe(data => {
       this.countries = data;
     });
 
@@ -38,8 +38,11 @@ export class SearchTopHeadlinesComponent implements OnInit {
   }
 
   setSelectedCategory(categorySelected: string) {
-    console.log('selected category: ' + categorySelected);
     this.selectedCategory = categorySelected;
+  }
+
+  setSelectedCountry(countrySelected: string) {
+    this.selectedCountry = countrySelected;
   }
 
   performSearch(query: string) {

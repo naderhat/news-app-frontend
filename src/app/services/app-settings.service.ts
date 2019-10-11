@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class AppSettingsService {
   constructor(private http: HttpClient) {}
 
-  public getCountries(): Observable<any> {
+  public getNewsCountries(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/news/countries`);
   }
 
