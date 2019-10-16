@@ -29,7 +29,8 @@ import { HttpIntercepterAuthService } from './services/intercepter-auth.service'
 import { NewsCategoryComponent } from './news-category/news-category.component';
 import { NewsCountryComponent } from './news-country/news-country.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
-
+import { RequestCache } from './services/request-cache.service';
+import { CachingInterceptor } from './services/caching-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,16 @@ import { SelectedItemsComponent } from './selected-items/selected-items.componen
     AppRoutingModule,
     NgxPaginationModule
   ],
-  providers: [DatePipe, { provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterAuthService, multi: true }],
+  providers: [
+    DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpIntercepterAuthService,
+      multi: true
+    },
+    RequestCache,
+    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
