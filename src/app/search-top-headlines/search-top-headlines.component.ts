@@ -11,7 +11,6 @@ import { SearchResultService } from 'src/app/search-result.service';
 })
 export class SearchTopHeadlinesComponent implements OnInit {
   searchNews: FormControl;
-  countries;
   selectedCountry: string;
   selectedCategory: string;
 
@@ -21,16 +20,10 @@ export class SearchTopHeadlinesComponent implements OnInit {
     private newsApiService: NewsApiService,
     private searchResultSrv: SearchResultService,
     private appSettingsSrv: AppSettingsService
-  ) {
-    this.countries = new Array();
-  }
+  ) {}
 
   ngOnInit() {
     this.searchNews = new FormControl();
-
-    this.appSettingsSrv.getNewsCountries().subscribe(data => {
-      this.countries = data;
-    });
 
     // Set dropdown to default values when component load
     this.selectedCountry = '';
