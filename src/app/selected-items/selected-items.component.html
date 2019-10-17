@@ -2,5 +2,6 @@
   <app-selected-country
     *ngFor="let item of items"
     [countryCode]="item"
+    (countryCodeRemoved)="removeCountry($event)"
   ></app-selected-country>
 </div>

@@ -3,7 +3,9 @@ import {
   OnInit,
   OnChanges,
   Input,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { AppSettingsService } from '../services/app-settings.service';
 import { Utility } from '../utility';
@@ -16,19 +18,19 @@ import { Country } from '../country';
   styleUrls: ['./selected-items.component.css']
 })
 export class SelectedItemsComponent implements OnInit, OnChanges {
-  @Input() items: Array<Country>;
+  @Input() items: Array<string>;
+  @Output() itemsChange: EventEmitter<Array<string>>;
 
-  constructor(private appSettingsService: AppSettingsService) {}
+  constructor(private appSettingsService: AppSettingsService) {
+    this.itemsChange = new EventEmitter<Array<string>>();
+  }
 
   ngOnInit() {}
 
   ngOnChanges() {}
 
-  /* getCountryNameFromCode(code: string): Observable<string> {
-    this.appSettingsService.getNewsCountries().subscribe(data => {
-      const countryName = Utility.getCountryNameFromCode(code, data);
-      console.log(countryName);
-      return countryName;
-    });
-  } */
+  removeCountry(countryCode: string) {
+    this.items = this.items.filter(code => code !== countryCode);
+    this.itemsChange.emit(this.items);
+  }
 }
