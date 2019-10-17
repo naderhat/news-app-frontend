@@ -4,9 +4,7 @@
     (categorySelected)="setSelectedCategory($event)"
   ></app-news-category>
   <button class="btn btn-primary">Add Category</button>
-  <app-news-country
-    (countrySelected)="setSelectedCountry($event)"
-  ></app-news-country>
+  <app-news-country [(countrySelected)]="selectedCountry"></app-news-country>
   <button class="btn-primary" (click)="addSelectedCountry()">
     Add Country
   </button>
