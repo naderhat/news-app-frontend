@@ -31,6 +31,7 @@ import { NewsCountryComponent } from './news-country/news-country.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
 import { RequestCache } from './services/request-cache.service';
 import { CachingInterceptor } from './services/caching-interceptor.service';
+import { SelectedCountryComponent } from './selected-country/selected-country.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CachingInterceptor } from './services/caching-interceptor.service';
     ProfileComponent,
     NewsCategoryComponent,
     NewsCountryComponent,
-    SelectedItemsComponent
+    SelectedItemsComponent,
+    SelectedCountryComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,10 @@ import {
   Input,
   ChangeDetectionStrategy
 } from '@angular/core';
+import { AppSettingsService } from '../services/app-settings.service';
+import { Utility } from '../utility';
+import { Observable } from 'rxjs';
+import { Country } from '../country';
 
 @Component({
   selector: 'app-selected-items',
@@ -12,14 +16,19 @@ import {
   styleUrls: ['./selected-items.component.css']
 })
 export class SelectedItemsComponent implements OnInit, OnChanges {
-  @Input() items: Array<string>;
+  @Input() items: Array<Country>;
 
-  constructor() {}
+  constructor(private appSettingsService: AppSettingsService) {}
 
   ngOnInit() {}
 
-  ngOnChanges() {
-    console.log('on change');
-    console.log(this.items);
-  }
+  ngOnChanges() {}
+
+  /* getCountryNameFromCode(code: string): Observable<string> {
+    this.appSettingsService.getNewsCountries().subscribe(data => {
+      const countryName = Utility.getCountryNameFromCode(code, data);
+      console.log(countryName);
+      return countryName;
+    });
+  } */
 }

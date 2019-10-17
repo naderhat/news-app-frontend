@@ -26,13 +26,10 @@ export class ProfileComponent implements OnInit {
   addSelectedCountry() {
     if (!this.selectedCountries.includes(this.selectedCountry)) {
       this.selectedCountries.push(this.selectedCountry);
-      console.log('country: ' + this.selectedCountry);
-      console.log('selected countries: ' + this.selectedCountries);
     }
   }
 
   addSelectedCategory() {
-    console.log('category: ' + this.selectedCategory);
     if (!this.selectedCategories.includes(this.selectedCategory)) {
       this.selectedCategories.push(this.selectedCategory);
     }
