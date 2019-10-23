@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from 'src/app/models';
+import { User, Profile } from 'src/app/models';
 import { environment } from 'src/environments/environment';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { AlertService } from './alert.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class UserService {
           ? this.alertService.error(data['error'], true)
           : this.alertService.success(data['message'], true);
       });
+  }
+
+  retrieveProfile(): Observable<any> {
+    return this.http.get<Profile>(`${environment.apiUrl}/user/profile`);
   }
 }

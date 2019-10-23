@@ -77,9 +77,7 @@ import { SelectedCountryComponent } from './selected-country/selected-country.co
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterAuthService,
       multi: true
-    },
-    RequestCache,
-    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+    }
   ],
   bootstrap: [AppComponent]
 })
