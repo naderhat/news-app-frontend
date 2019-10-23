@@ -6,7 +6,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchEverythingComponent } from './search-everything/search-everything.component';
@@ -65,7 +65,11 @@ import { SelectedCountryComponent } from './selected-country/selected-country.co
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    })
   ],
   providers: [
     DatePipe,

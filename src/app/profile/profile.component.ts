@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ export class ProfileComponent implements OnInit {
   selectedCountries = new Array<string>();
   selectedCategories = new Array<string>();
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {}
 
@@ -34,5 +35,11 @@ export class ProfileComponent implements OnInit {
     if (!this.selectedCategories.includes(this.selectedCategory)) {
       this.selectedCategories.push(this.selectedCategory);
     }
+  }
+
+  saveProfile() {
+    console.log('save profile');
+    this.userService.saveProfile(this.selectedCountries);
+    this.selectedCountries = new Array<string>();
   }
 }

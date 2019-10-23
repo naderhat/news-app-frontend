@@ -3,7 +3,11 @@ import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
-import { AuthenticationService, UserService, AlertService } from 'src/app/services';
+import {
+  AuthenticationService,
+  UserService,
+  AlertService
+} from 'src/app/services';
 import { first } from 'rxjs/internal/operators/first';
 
 @Component({
@@ -16,8 +20,13 @@ export class UserRegistrationComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authenticationService: AuthenticationService,
-    private userService: UserService, private alertService: AlertService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -43,14 +52,20 @@ export class UserRegistrationComponent implements OnInit {
 
     this.loading = true;
 
-    this.userService.register(this.registerForm.value).pipe(first()).subscribe(data => {
-      data['error'] !== '' ? this.alertService.error(data['error'], true) : this.alertService.success(data['message'], true);
-      this.router.navigate(['/login']);
-    },
-      error => {
-        this.alertService.error(error);
-        this.loading = false;
-      });
+    this.userService
+      .register(this.registerForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          data['error'] !== ''
+            ? this.alertService.error(data['error'], true)
+            : this.alertService.success(data['message'], true);
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        }
+      );
   }
-
 }
