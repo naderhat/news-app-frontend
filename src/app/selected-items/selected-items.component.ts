@@ -19,6 +19,7 @@ import { Country } from '../country';
 })
 export class SelectedItemsComponent implements OnInit, OnChanges {
   @Input() items: Array<string>;
+  @Input() itemType: string;
   @Output() itemsChange: EventEmitter<Array<string>>;
 
   constructor(private appSettingsService: AppSettingsService) {
@@ -29,8 +30,8 @@ export class SelectedItemsComponent implements OnInit, OnChanges {
 
   ngOnChanges() {}
 
-  removeCountry(countryCode: string) {
-    this.items = this.items.filter(code => code !== countryCode);
+  removeItem(itemName: string) {
+    this.items = this.items.filter(item => item !== itemName);
     this.itemsChange.emit(this.items);
   }
 }

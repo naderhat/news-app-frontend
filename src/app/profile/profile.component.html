@@ -1,13 +1,22 @@
 <div>
   <span>Manage your favourite news categories</span>
   <app-news-category
-    (categorySelected)="setSelectedCategory($event)"
+    [(categorySelected)]="selectedCategory"
   ></app-news-category>
-  <button class="btn btn-primary">Add Category</button>
+  <button class="btn btn-primary" (click)="addSelectedCategory()">
+    Add Category
+  </button>
   <app-news-country [(countrySelected)]="selectedCountry"></app-news-country>
-  <button class="btn-primary" (click)="addSelectedCountry()">
+  <button class="btn btn-primary" (click)="addSelectedCountry()">
     Add Country
   </button>
-  <app-selected-items [(items)]="selectedCountries"></app-selected-items>
+  <app-selected-items
+    [itemType]="'country'"
+    [(items)]="selectedCountries"
+  ></app-selected-items>
+  <app-selected-items
+    [itemType]="'category'"
+    [(items)]="selectedCategories"
+  ></app-selected-items>
   <button class="btn-primary" (click)="saveProfile()">Save Profile</button>
 </div>

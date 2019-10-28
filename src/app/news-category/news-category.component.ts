@@ -1,4 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges
+} from '@angular/core';
 import { AppSettingsService } from '../services/app-settings.service';
 
 @Component({
@@ -6,13 +13,16 @@ import { AppSettingsService } from '../services/app-settings.service';
   templateUrl: './news-category.component.html',
   styleUrls: ['./news-category.component.css']
 })
-export class NewsCategoryComponent implements OnInit {
+export class NewsCategoryComponent implements OnInit, OnChanges {
+  @Input() categorySelected: string;
   @Output()
-  categorySelected = new EventEmitter<string>();
+  categorySelectedChange = new EventEmitter<string>();
   selectedCategory;
   categories;
 
-  constructor(private appSettingService: AppSettingsService) {}
+  constructor(private appSettingService: AppSettingsService) {
+    this.categorySelectedChange = new EventEmitter<string>();
+  }
 
   ngOnInit() {
     this.appSettingService.getNewsCategories().subscribe(data => {
@@ -22,7 +32,11 @@ export class NewsCategoryComponent implements OnInit {
     this.selectedCategory = '';
   }
 
+  ngOnChanges() {
+    this.selectedCategory = this.categorySelected;
+  }
+
   selected() {
-    this.categorySelected.emit(this.selectedCategory);
+    this.categorySelectedChange.emit(this.selectedCategory);
   }
 }

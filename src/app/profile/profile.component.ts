@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
       if (res !== null) {
         this.profile = res;
         this.selectedCountries = this.profile.countryCodes;
+        this.selectedCategories = this.profile.categories;
       }
     });
   }
@@ -45,12 +46,20 @@ export class ProfileComponent implements OnInit {
   }
 
   addSelectedCategory() {
-    if (!this.selectedCategories.includes(this.selectedCategory)) {
+    if (
+      this.selectedCategory &&
+      this.selectedCategory.trim() !== '' &&
+      !this.selectedCategories.includes(this.selectedCategory)
+    ) {
       this.selectedCategories.push(this.selectedCategory);
     }
+    this.selectedCategory = '';
   }
 
   saveProfile() {
-    this.userService.saveProfile(this.selectedCountries);
+    this.userService.saveProfile(
+      this.selectedCountries,
+      this.selectedCategories
+    );
   }
 }
