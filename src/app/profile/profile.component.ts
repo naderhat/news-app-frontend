@@ -27,17 +27,17 @@ export class ProfileComponent implements OnInit {
   }
 
   setSelectedCategory(categorySelected: string) {
-    this.selectedCategory = categorySelected;
+    this.selectedCategory = categorySelected.trim();
   }
 
   setSelectedCountry(countrySelected: string) {
-    this.selectedCountry = countrySelected;
+    this.selectedCountry = countrySelected.trim();
   }
 
   addSelectedCountry() {
     if (
       this.selectedCountry &&
-      this.selectedCountry.trim() !== '' &&
+      this.selectedCountry !== '' &&
       !this.selectedCountries.includes(this.selectedCountry)
     ) {
       this.selectedCountries.push(this.selectedCountry);
@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
   addSelectedCategory() {
     if (
       this.selectedCategory &&
-      this.selectedCategory.trim() !== '' &&
+      this.selectedCategory !== '' &&
       !this.selectedCategories.includes(this.selectedCategory)
     ) {
       this.selectedCategories.push(this.selectedCategory);
