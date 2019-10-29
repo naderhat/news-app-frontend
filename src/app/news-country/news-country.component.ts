@@ -1,4 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges
+} from '@angular/core';
 import { AppSettingsService } from '../services/app-settings.service';
 
 @Component({
@@ -6,13 +13,16 @@ import { AppSettingsService } from '../services/app-settings.service';
   templateUrl: './news-country.component.html',
   styleUrls: ['./news-country.component.css']
 })
-export class NewsCountryComponent implements OnInit {
+export class NewsCountryComponent implements OnInit, OnChanges {
+  @Input() countrySelected: string;
   @Output()
-  countrySelected = new EventEmitter<string>();
+  countrySelectedChange: EventEmitter<string>;
   selectedCountry;
   countries;
 
-  constructor(private appSettingService: AppSettingsService) {}
+  constructor(private appSettingService: AppSettingsService) {
+    this.countrySelectedChange = new EventEmitter<string>();
+  }
 
   ngOnInit() {
     this.appSettingService.getNewsCountries().subscribe(data => {
@@ -22,7 +32,11 @@ export class NewsCountryComponent implements OnInit {
     this.selectedCountry = '';
   }
 
+  ngOnChanges() {
+    this.selectedCountry = this.countrySelected;
+  }
+
   selected() {
-    this.countrySelected.emit(this.selectedCountry);
+    this.countrySelectedChange.emit(this.selectedCountry);
   }
 }

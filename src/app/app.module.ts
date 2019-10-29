@@ -6,7 +6,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { SearchEverythingComponent } from './search-everything/search-everything.component';
@@ -31,6 +31,8 @@ import { NewsCountryComponent } from './news-country/news-country.component';
 import { SelectedItemsComponent } from './selected-items/selected-items.component';
 import { RequestCache } from './services/request-cache.service';
 import { CachingInterceptor } from './services/caching-interceptor.service';
+import { SelectedCountryComponent } from './selected-country/selected-country.component';
+import { SelectedCategoryComponent } from './selected-category/selected-category.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { CachingInterceptor } from './services/caching-interceptor.service';
     ProfileComponent,
     NewsCategoryComponent,
     NewsCountryComponent,
-    SelectedItemsComponent
+    SelectedItemsComponent,
+    SelectedCountryComponent,
+    SelectedCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,11 @@ import { CachingInterceptor } from './services/caching-interceptor.service';
     OwlNativeDateTimeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    })
   ],
   providers: [
     DatePipe,
@@ -71,9 +79,7 @@ import { CachingInterceptor } from './services/caching-interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpIntercepterAuthService,
       multi: true
-    },
-    RequestCache,
-    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+    }
   ],
   bootstrap: [AppComponent]
 })

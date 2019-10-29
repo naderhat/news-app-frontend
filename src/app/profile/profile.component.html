@@ -1,14 +1,38 @@
-<div>
-  <span>Manage your favourite news categories</span>
-  <app-news-category
-    (categorySelected)="setSelectedCategory($event)"
-  ></app-news-category>
-  <button class="btn btn-primary">Add Category</button>
-  <app-news-country
-    (countrySelected)="setSelectedCountry($event)"
-  ></app-news-country>
-  <button class="btn-primary" (click)="addSelectedCountry()">
-    Add Country
+<h3>Manage your favourite news categories</h3>
+<div class="m-5">
+  <div class="m-5">
+    <app-news-category
+      class="div-inline"
+      [(categorySelected)]="selectedCategory"
+    ></app-news-category>
+    <button class="btn btn-primary ml-2" (click)="addSelectedCategory()">
+      Add Category
+    </button>
+  </div>
+  <div class="m-5">
+    <app-news-country
+      class="div-inline"
+      [(countrySelected)]="selectedCountry"
+    ></app-news-country>
+    <button class="btn btn-primary ml-2" (click)="addSelectedCountry()">
+      Add Country
+    </button>
+  </div>
+  <div class="m-5">
+    <h3 class="pb-2">Selected Countries</h3>
+    <app-selected-items
+      [itemType]="'country'"
+      [(items)]="selectedCountries"
+    ></app-selected-items>
+  </div>
+  <div class="m-5">
+    <h3 class="pb-2">Selected Categories</h3>
+    <app-selected-items
+      [itemType]="'category'"
+      [(items)]="selectedCategories"
+    ></app-selected-items>
+  </div>
+  <button class="btn btn-primary ml-5" (click)="saveProfile()">
+    Save Profile
   </button>
-  <app-selected-items [items]="selectedCountries"></app-selected-items>
 </div>

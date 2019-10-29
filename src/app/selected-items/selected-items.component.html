@@ -1,3 +1,17 @@
-<div class="mx-md-n5">
-  <span class="px-md-5" *ngFor="let item of items">{{ item }}</span>
+<div class="mx-md-n5 flex-container">
+  <div *ngIf="itemType === 'country'">
+    <app-selected-country
+      *ngFor="let item of items"
+      [countryCode]="item"
+      (countryCodeRemoved)="removeItem($event)"
+    ></app-selected-country>
+  </div>
+
+  <div *ngIf="itemType === 'category'">
+    <app-selected-category
+      *ngFor="let item of items"
+      [categoryName]="item"
+      (categoryRemoved)="removeItem($event)"
+    ></app-selected-category>
+  </div>
 </div>

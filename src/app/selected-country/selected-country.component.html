@@ -1,0 +1,17 @@
+<div class="border border-primary rounded card">
+  <div class="card-body">
+    <span
+      [className]="'flag-icon flag-icon-squared flag-icon-' + countryCode"
+      class="flag-icon flag-icon-squared"
+    ></span>
+    <span class="px-md-5">{{ countryName }}</span>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="removeCountry()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

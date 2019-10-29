@@ -29,7 +29,7 @@ export class CachingInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       tap(event => {
-        if (event instanceof HttpResponse) {
+        if (event instanceof HttpResponse && req.method === 'GET') {
           cache.put(req, event);
         }
       })
