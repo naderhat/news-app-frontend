@@ -27,13 +27,14 @@
       <input
         type="radio"
         class="form-check-input"
-        name="adion-btn-subscription-frequency"
-        id="radion-btn-subscription-frequency-{{ frequency | lowercase }}"
+        [(ngModel)]="selectedSubscriptionFrequency"
+        name="subscriptionFrequency"
+        id="subscription-frequency-{{ frequency | lowercase }}"
         value="{{ frequency }}"
       />
       <label
         class="form-check-label"
-        for="radion-btn-subscription-frequency-{{ frequency | lowercase }}"
+        for="subscription-frequency-{{ frequency | lowercase }}"
         >{{ frequency }}</label
       >
     </div>

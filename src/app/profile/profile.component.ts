@@ -11,6 +11,7 @@ import { AppSettingsService } from '../services/app-settings.service';
 export class ProfileComponent implements OnInit {
   selectedCountry: string;
   selectedCategory: string;
+  selectedSubscriptionFrequency: string;
   selectedCountries = new Array<string>();
   selectedCategories = new Array<string>();
   profile: Profile;
@@ -27,6 +28,7 @@ export class ProfileComponent implements OnInit {
         this.profile = res;
         this.selectedCountries = this.profile.countryCodes;
         this.selectedCategories = this.profile.categories;
+        this.selectedSubscriptionFrequency = this.profile.subscriptionFrequency;
       }
     });
 
@@ -70,7 +72,8 @@ export class ProfileComponent implements OnInit {
   saveProfile() {
     this.userService.saveProfile(
       this.selectedCountries,
-      this.selectedCategories
+      this.selectedCategories,
+      this.selectedSubscriptionFrequency
     );
   }
 }
