@@ -19,6 +19,27 @@
     </button>
   </div>
   <div class="m-5">
+    <h3 class="pb-2">Subscription Frequency</h3>
+    <div
+      class="p-1 form-check form-check-inline"
+      *ngFor="let frequency of subscriptionFrequencies"
+    >
+      <input
+        type="radio"
+        class="form-check-input"
+        [(ngModel)]="selectedSubscriptionFrequency"
+        name="subscriptionFrequency"
+        id="subscription-frequency-{{ frequency | lowercase }}"
+        value="{{ frequency }}"
+      />
+      <label
+        class="form-check-label"
+        for="subscription-frequency-{{ frequency | lowercase }}"
+        >{{ frequency }}</label
+      >
+    </div>
+  </div>
+  <div class="m-5">
     <h3 class="pb-2">Selected Countries</h3>
     <app-selected-items
       [itemType]="'country'"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services';
 import { Profile } from '../models';
+import { AppSettingsService } from '../services/app-settings.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,11 +11,16 @@ import { Profile } from '../models';
 export class ProfileComponent implements OnInit {
   selectedCountry: string;
   selectedCategory: string;
+  selectedSubscriptionFrequency: string;
   selectedCountries = new Array<string>();
   selectedCategories = new Array<string>();
   profile: Profile;
+  subscriptionFrequencies: string[];
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private appSettingsService: AppSettingsService
+  ) {}
 
   ngOnInit() {
     this.userService.retrieveProfile().subscribe((res: Profile) => {
@@ -22,8 +28,15 @@ export class ProfileComponent implements OnInit {
         this.profile = res;
         this.selectedCountries = this.profile.countryCodes;
         this.selectedCategories = this.profile.categories;
+        this.selectedSubscriptionFrequency = this.profile.subscriptionFrequency;
       }
     });
+
+    this.appSettingsService
+      .getNewsSubcriptionFrequencies()
+      .subscribe((res: string[]) => {
+        this.subscriptionFrequencies = res;
+      });
   }
 
   setSelectedCategory(categorySelected: string) {
@@ -59,7 +72,8 @@ export class ProfileComponent implements OnInit {
   saveProfile() {
     this.userService.saveProfile(
       this.selectedCountries,
-      this.selectedCategories
+      this.selectedCategories,
+      this.selectedSubscriptionFrequency
     );
   }
 }

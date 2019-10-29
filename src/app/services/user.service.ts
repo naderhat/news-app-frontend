@@ -16,10 +16,15 @@ export class UserService {
     return this.http.post(`${environment.apiUrl}/user/register`, user);
   }
 
-  saveProfile(updatedNewsCountries: string[], updatedNewsCategories) {
+  saveProfile(
+    updatedNewsCountries: string[],
+    updatedNewsCategories,
+    updatedSubscriptionFrequnech: string
+  ) {
     const body = {
       countryCodes: updatedNewsCountries,
-      categories: updatedNewsCategories
+      categories: updatedNewsCategories,
+      subscriptionFrequency: updatedSubscriptionFrequnech
     };
     const config = {
       headers: new HttpHeaders().set('Content-Type', 'application/json')
