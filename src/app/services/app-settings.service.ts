@@ -16,4 +16,8 @@ export class AppSettingsService {
   public getNewsCategories(): Observable<any> {
     return this.http.get(`${environment.apiUrl}/news/categories`);
   }
+
+  public getNewsSubcriptionFrequencies(): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/news/subscriptionFrequencies`);
+  }
 }
